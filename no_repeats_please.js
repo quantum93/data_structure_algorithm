@@ -39,11 +39,13 @@ function permAlone(str) {
     const currentChar = str[i];
     const remainingChars = str.slice(0,i) + str.slice(i+1); // D OG, O D G, G DO 의 세 경우를 고려해야함
     for(let j=0; j < remainingChars.length; j++) {
-      console.log("perAlone = ", permAlone(remainingChars));
       permutationArr.push(currentChar + permAlone(remainingChars)[j]);
     }
   }
-  return permutationArr;
+  return permutationArr.map( 
+    e => [...e].filter(char => char !== ',')
+               .filter((element, index) => [...e][index+1] !== [...e][index])
+  );
 }
 
-console.log(permAlone('DOG'));
+console.log(permAlone('aab'));
