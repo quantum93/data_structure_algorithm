@@ -18,7 +18,6 @@ console.log(reverse("Hello"));
 
 /**
  * https://levelup.gitconnected.com/find-all-permutations-of-a-string-in-javascript-af41bfe072d2 
- * https://medium.com/@malaynandasana/master-theorem-b544fa8829f7
  * 
  * permutation example 
  * 
@@ -29,15 +28,14 @@ console.log(reverse("Hello"));
  * 
  */
 function permutation(str) {
-  if(str.length === 0) return "";
-  if(str.length === 1) return str;
+  if(str.length < 2) return str;
 
   let result = [];
   for(let i=0; i < str.length; i++) {
     const currentChar = str[i];
-    const remainChars = str.slice(0,i) + str.slice(i+1);
-    for(let j=0; j < remainChars.length; j++) {
-      result.push(currentChar + permutation(remainChars)[j]); 
+    const remainChars = str.slice(0,i) + str.slice(i+1, str.length);
+    for(let chars of permutation(remainChars)) {
+      result.push(currentChar + chars);
     }
   }
   return result;
