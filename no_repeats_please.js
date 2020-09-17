@@ -28,24 +28,34 @@ console.log(reverse("Hello"));
  * 
  * 
  */
-
-function permAlone(str) {
-
+function permutation(str) {
   if(str.length === 0) return "";
   if(str.length === 1) return str;
 
-  let permutationArr = []; //답이 하나이상의 원시형 데이터이므로 배열을 이용해서 최종 결과를 저장
+  let result = [];
   for(let i=0; i < str.length; i++) {
     const currentChar = str[i];
-    const remainingChars = str.slice(0,i) + str.slice(i+1); // D OG, O D G, G DO 의 세 경우를 고려해야함
-    for(let j=0; j < remainingChars.length; j++) {
-      permutationArr.push(currentChar + permAlone(remainingChars)[j]);
+    const remainChars = str.slice(0,i) + str.slice(i+1);
+    for(let j=0; j < remainChars.length; j++) {
+      result.push(currentChar + permutation(remainChars)[j]); 
     }
   }
-  return permutationArr.map( 
-    e => [...e].filter(char => char !== ',')
-               .filter((element, index) => [...e][index+1] !== [...e][index])
-  );
+  return result;
 }
 
-console.log(permAlone('aab'));
+function permAlone(str) {
+  if(str.length === 1) { return 1};
+  if([...str].every(char => char === [...str][0])) {return 0;};
+  return permutation(str);
+}
+
+console.log(permAlone('zzzzzzzz')); // 0
+console.log(permAlone('aaa')); // 0
+console.log(permAlone('a')); // 1
+console.log(permAlone('aab')); // 2
+
+/** let result = permutation.map( 
+    arr => [...arr].filter(char => char !== ',')
+                   .filter((element, index) => [...arr][index+1] !== [...arr][index])    
+  ).filter(arr => arr.length === str.length);
+  console.log(result.length); */
