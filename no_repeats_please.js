@@ -44,15 +44,16 @@ function permutation(str) {
 }
 
 function permAlone(str) {
-  if(str.length === 1) { return 1};
-  if([...str].every(char => char === [...str][0])) {return 0;};
-  return permutation(str);
+  return (str.length === 1) ? 1: 
+         ([...str].every(char => char === [...str][0])) ? 0: 
+         permutation(str);
 }
 
 console.log(permAlone('zzzzzzzz')); // 0
 console.log(permAlone('aaa')); // 0
 console.log(permAlone('a')); // 1
 console.log(permAlone('aab')); // 2
+console.log(permAlone('aabb')); // 8
 
 /** let result = permutation.map( 
     arr => [...arr].filter(char => char !== ',')
