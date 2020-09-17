@@ -52,6 +52,7 @@ console.log(permAlone('aaa')); // 0
 console.log(permAlone('a')); // 1
 console.log(permAlone('aab')); // 2
 console.log(permAlone('aabb')); // 8
+console.log(permAlone('aaab')); // 0
 
 /** let result = permutation.map( 
     arr => [...arr].filter(char => char !== ',')
