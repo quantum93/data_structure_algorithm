@@ -2,7 +2,9 @@ function pairwise(arr, arg) {
   let result = 0;
   for(let i = 0; i < arr.length-1; i++) {
     for(let j = i+1; j < arr.length; j++) {
+      //console.log(i, j);
       if(arr[i] + arr[j] === arg) {
+        console.log(i, j);
         result += i+j;
       }
     }
