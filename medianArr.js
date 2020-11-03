@@ -24,8 +24,10 @@ const medianOfTwoSortedArr = (arr1,arr2,pos) => {
 
   // recursion을 이용해서 계속 배열의 크기를 줄여간다. time complexity = O(log(n))
   if(median1 < median2) {
+    console.log(arr1.slice(offsetMinus),arr2.slice(offsetMinus));
     return medianOfTwoSortedArr(arr1.slice(offsetMinus), arr2.slice(offsetMinus),offsetPlus);
   } else {
+    console.log(arr1.slice(offsetMinus),arr2.slice(offsetMinus));
     return medianOfTwoSortedArr(arr2.slice(offsetMinus), arr1.slice(offsetMinus),offsetPlus);
   }
 }
