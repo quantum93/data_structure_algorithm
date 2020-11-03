@@ -9,12 +9,11 @@ function commonElements(kArray) {
       if (last != currentElement) {
         (!hashmap[currentElement]) ? hashmap[currentElement] = 1: hashmap[currentElement]++;
       }
-        last = currentElement;
+      last = currentElement;
     }
   }
 
-  // Iterate through hashmap
-  for (var prop in hashmap) {
+  for (let prop in hashmap) {
     if (hashmap[prop] == kArray.length) answer.push(parseInt(prop));
   }
   return answer;
