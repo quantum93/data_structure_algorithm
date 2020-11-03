@@ -1,21 +1,23 @@
-const commonElements = (kArray) => {
+function commonElements(kArray) {
   let hashmap = {}, last, answer = [];
-  for(let i = 0, kArrLen = kArray.length; i < kArrLen; i++) {
-    let currentArr = kArray[i];
+
+  for (let i = 0; i < kArray.length; i++) {
+    let currentArray = kArray[i];
     last = null;
-    for(let j = 0, currentArrLen = currentArr.length; j < currentArrLen; j++) {
-      let currentEl = currentArr[j];
-      if(last != currentEl) {
-        return (!hashmap[currentEl]) ? hashmap[currentEl] = 1: hashmap[currentEl]++;
+    for (let j = 0; j < currentArray.length; j++) {
+      let currentElement = currentArray[j];
+      if (last != currentElement) {
+        (!hashmap[currentElement]) ? hashmap[currentElement] = 1: hashmap[currentElement]++;
       }
-      last = currentEl;
+        last = currentElement;
     }
   }
-  
-  for(let prop in hashmap) {
-    if(hashmap[prop] == kArray.length) answer.push(parseInt(prop));
+
+  // Iterate through hashmap
+  for (var prop in hashmap) {
+    if (hashmap[prop] == kArray.length) answer.push(parseInt(prop));
   }
   return answer;
 }
 
-console.log(commonElements([1,2,3,],[1,2,3,4],[1,2]));
+console.log(commonElements([[1,2,3,],[1,2,3,4],[1,2]]));
