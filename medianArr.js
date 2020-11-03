@@ -18,16 +18,23 @@ const medianOfTwoSortedArr = (arr1,arr2,pos) => {
 
   //두 배열의 median값이 다른 경우
   let evenOffset = pos % 2 == 0 ? 1: 0; // 배열이 짝수면 1 홀수면 0
-  let OffsetMinus = Math.floor(pos/2) - evenOffset;
+  let offsetMinus = Math.floor(pos/2) - evenOffset;
   let offsetPlus = Math.floor(pos/2) + evenOffset;
+  console.log(median1, median2, evenOffset, offsetMinus, offsetPlus);
 
+  // recursion을 이용해서 계속 배열의 크기를 줄여간다. time complexity = O(log(n))
   if(median1 < median2) {
-    return medianOfTwoSortedArr(arr1.slice(OffsetMinus), arr2.slice(OffsetMinus),offsetPlus);
+    return medianOfTwoSortedArr(arr1.slice(offsetMinus), arr2.slice(offsetMinus),offsetPlus);
   } else {
-    return medianOfTwoSortedArr(arr1.slice(OffsetPlus), arr2.slice(OffsetPlus),OffsetMinus);
+    return medianOfTwoSortedArr(arr2.slice(offsetMinus), arr1.slice(offsetMinus),offsetPlus);
   }
 }
 
-console.log(medianOfTwoSortedArr([1,2,3],[2,3,5],3));
+/* console.log(medianOfTwoSortedArr([1,2,3],[2,3,5],3));
 console.log(medianOfTwoSortedArr([1,2,3],[4,5,6],3));
 console.log(medianOfTwoSortedArr([11,23,24],[32,33,450],3));
+console.log(medianOfTwoSortedArr([7,8,9],[4,5,6],3));
+console.log(medianOfTwoSortedArr([1,2,3,4],[6,7,8,9],4));
+console.log(medianOfTwoSortedArr([7,8,9,10],[4,5,6,7],4)); */
+console.log(medianOfTwoSortedArr([1,2,3,4,5,6,7,8,9,10],[11,12,13,14,15,16,17,18,19,20],10));
+console.log(medianOfTwoSortedArr([11,12,13,14,15,16,17,18,19,20],[1,2,3,4,5,6,7,8,9,10],10));
